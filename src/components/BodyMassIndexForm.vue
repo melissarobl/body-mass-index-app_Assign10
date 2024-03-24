@@ -5,23 +5,6 @@ const props = defineProps({
   metricUnitsChecked: Boolean
 })
 
-//prepare variables to be defined by what Boolean says
-let heightLabel = ''
-let weightLabel = ''
-
-function displayedLabels(metricUnitsChecked) { //if using American units (checkbox not checked), use these labels
-  if(props.metricUnitsChecked === true) { //if using American units (checkbox not checked), use these labels
-    heightLabel = 'Height in meters'
-    weightLabel = 'Weight in kilograms'
-  } else {
-    heightLabel = 'Height in inches'
-    weightLabel = 'Weight in pounds'
-  }
-}
-
-displayedLabels(props.metricUnitsChecked)
-
-
 //Create two reactive data and use v-model to connect with the form.
  const heightEntered = ref('')
  const weightEntered = ref('')
@@ -44,19 +27,27 @@ function statsEntered() {
 // use a function to emit event
 
 
+
 </script>
 
 <template>
   <div id="enterHeightWeight"> <!-- Show a form for the user to enter their height in meters, and weight in kilograms.  -->
     <h2>Enter your height and weight</h2>
 
+    <div v-if="props.metricUnitsChecked">
+      <label for="heightEntered" id="numberBox">Height in meters</label>
+      <input v-model="heightEntered" id="heightEntered">
+      <label for="weightEntered" id="numberBox">Weight in kilograms</label>
+      <input v-model="weightEntered" id="weightEntered">
+    </div>
 
-    <label for="heightEntered" id="numberBox"> {{ heightLabel }} </label>
-    <input v-model="heightEntered" id="heightEntered" >  <!-- use v-model to connect with the form.  -->
+    <div v-else>
+      <label for="heightEntered" id="numberBox"> Height in inches </label>
+      <input v-model="heightEntered" id="heightEntered">
+      <label for="weightEntered" id="numberBox"> Weight in pounds  </label>
+      <input v-model="weightEntered" id="weightEntered">
+    </div>
 
-
-    <label for="weightEntered" id="numberBox"> {{  weightLabel }}  </label>
-    <input v-model="weightEntered" id="weightEntered" >  <!-- use v-model to connect with the form.  -->
 
 
     <button v-on:click="statsEntered" type="button" id="button">Calculate</button>  <!-- Show a button with the text 'Calculate'   -->
