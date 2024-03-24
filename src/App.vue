@@ -27,7 +27,7 @@ function computeBmi( height, weight ) {  //arguments are the data provided in wh
 
 <!--    <label for="checkboxUnits">-->
 <!--        <input type="checkbox" v-model="metricUnitsChecked">-->
-<!--        Use Metric Units  &lt;!&ndash;  &ndash;&gt;-->
+<!--        Use Metric Units -->
 <!--    </label>-->
 
     <BodyMassIndexForm

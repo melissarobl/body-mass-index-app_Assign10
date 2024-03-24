@@ -1,5 +1,6 @@
 <script setup>
 import { ref, defineEmits } from 'vue' //declare reactive state
+//if using props, include props in this import
 
 // const props = defineProps({
 //   metricUnitsChecked: Boolean
