@@ -6,7 +6,7 @@ import { ref } from 'vue'
 const bmiCalculated =  ref('')
 const heightInput = ref('')
 const weightInput = ref('')
-const metricUnitsChecked = ref(false)  //box not checked initially
+//const metricUnitsChecked = ref(false)  //box not checked initially
 
 function computeBmi( height, weight ) {  //arguments are the data provided in what was emitted from child
   //then use reactive data defined in app.vue (heightInput and weightInput)
@@ -25,10 +25,11 @@ function computeBmi( height, weight ) {  //arguments are the data provided in wh
 
     <h1>Body Mass Index Calculator</h1>
 
-    <label for="checkboxUnits">
-        <input type="checkbox" v-model="metricUnitsChecked">
-        Use Metric Units  <!--  -->
-    </label>
+<!--    <label for="checkboxUnits">-->
+<!--        <input type="checkbox" v-model="metricUnitsChecked">-->
+<!--        Use Metric Units  &lt;!&ndash;  &ndash;&gt;-->
+<!--    </label>-->
+
     <BodyMassIndexForm
       v-on:stats-entered="computeBmi"
     ></BodyMassIndexForm>
