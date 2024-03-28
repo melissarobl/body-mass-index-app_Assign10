@@ -3,10 +3,11 @@ import BodyMassIndexForm from './components/BodyMassIndexForm.vue'
 
 import { ref } from 'vue'
 
-const bmiCalculated =  ref('')
+const bmiCalculated = ref('')
 const heightInput = ref('')
 const weightInput = ref('')
-//const metricUnitsChecked = ref(false)  //box not checked initially
+const metricUnitsChecked = ref(false)  //box not checked initially
+
 
 function computeBmi( height, weight ) {  //arguments are the data provided in what was emitted from child
   //then use reactive data defined in app.vue (heightInput and weightInput)
@@ -25,13 +26,14 @@ function computeBmi( height, weight ) {  //arguments are the data provided in wh
 
     <h1>Body Mass Index Calculator</h1>
 
-<!--    <label for="checkboxUnits">-->
-<!--        <input type="checkbox" v-model="metricUnitsChecked">-->
-<!--        Use Metric Units -->
-<!--    </label>-->
+    <label for="checkboxUnits">
+        <input type="checkbox" v-model="metricUnitsChecked">
+        Use Metric Units
+    </label>
 
     <BodyMassIndexForm
-      v-on:stats-entered="computeBmi"
+        v-bind:useMetric="metricUnitsChecked"
+        v-on:stats-entered="computeBmi"
     ></BodyMassIndexForm>
     <!-- Receive the stats-entered event from BodyMassIndexForm, and use the data sent to calculate the user's body mass index  -->
     <!-- same name (stats-entered) as defined event in child -->

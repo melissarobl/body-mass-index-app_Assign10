@@ -1,10 +1,10 @@
 <script setup>
-import { ref, defineEmits } from 'vue' //declare reactive state
+import { ref, defineEmits, defineProps } from 'vue' //declare reactive state
 //if using props, include props in this import
 
-// const props = defineProps({
-//   metricUnitsChecked: Boolean
-// })
+defineProps({
+  useMetric: Boolean
+})
 
 //Create two reactive data and use v-model to connect with the form.
  const heightEntered = ref('')
@@ -36,27 +36,25 @@ function statsEntered() {
   <div id="enterHeightWeight"> <!-- Show a form for the user to enter their height in meters, and weight in kilograms.  -->
     <h2>Enter your height and weight</h2>
 
-          <label for="heightEntered" id="numberBox">Height in meters</label>
-          <input v-model="heightEntered" id="heightEntered">
-          <label for="weightEntered" id="numberBox">Weight in kilograms</label>
-          <input v-model="weightEntered" id="weightEntered">
+<!--          <label for="heightEntered" id="numberBox">Height in meters</label>-->
+<!--          <input v-model="heightEntered" id="heightEntered">-->
+<!--          <label for="weightEntered" id="numberBox">Weight in kilograms</label>-->
+<!--          <input v-model="weightEntered" id="weightEntered">-->
 
 
-<!--    <div v-if="props.metricUnitsChecked">-->
-<!--      <label for="heightEntered" id="numberBox">Height in meters</label>-->
-<!--      <input v-model="heightEntered" id="heightEntered">-->
-<!--      <label for="weightEntered" id="numberBox">Weight in kilograms</label>-->
-<!--      <input v-model="weightEntered" id="weightEntered">-->
-<!--    </div>-->
+    <div v-if="useMetric">
+      <label for="heightEntered" id="numberBox">Height in meters</label>
+      <input v-model="heightEntered" id="heightEntered">
+      <label for="weightEntered" id="numberBox">Weight in kilograms</label>
+      <input v-model="weightEntered" id="weightEntered">
+    </div>
 
-<!--    <div v-else>-->
-<!--      <label for="heightEntered" id="numberBox">Height in inches</label>-->
-<!--      <input v-model="heightEntered" id="heightEntered">-->
-<!--      <label for="weightEntered" id="numberBox">Weight in pounds</label>-->
-<!--      <input v-model="weightEntered" id="weightEntered">-->
-<!--    </div>-->
-
-
+    <div v-else>
+      <label for="heightEntered" id="numberBox">Height in inches</label>
+      <input v-model="heightEntered" id="heightEntered">
+      <label for="weightEntered" id="numberBox">Weight in pounds</label>
+      <input v-model="weightEntered" id="weightEntered">
+    </div>
 
     <button v-on:click="statsEntered" type="button" id="button">Calculate</button>  <!-- Show a button with the text 'Calculate'   -->
 
