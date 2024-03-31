@@ -15,9 +15,13 @@ function computeBmi( height, weight ) {  //arguments are the data provided in wh
   heightInput.value = height
   weightInput.value = weight
 
-
-  const bmi= weight/ (height * height)  //To calculate the body mass index, assuming variables called height and weight,  const bmi = weight / ( height * height )
-  bmiCalculated.value= bmi.toFixed(2) //Display the calculated body mass index, formatted to 2 decimal places.
+  let bmi //declare a global variable to be used, but can't be defined yet- waiting for data
+  if (metricUnitsChecked.value === true) { //if the metric box is checked, then use this calculation
+    bmi = weight / (height * height)  //To calculate the body mass index, assuming variables called height and weight,  const bmi = weight / ( height * height )
+  } else { //if the box is not checked, use this calculation for bmi
+    bmi = (weight / (height * height) * 730)
+  }
+  bmiCalculated.value = bmi.toFixed(2) //Display the calculated body mass index, formatted to 2 decimal places.
 }
 </script>
 
@@ -27,7 +31,7 @@ function computeBmi( height, weight ) {  //arguments are the data provided in wh
     <h1>Body Mass Index Calculator</h1>
 
     <label for="checkboxUnits">
-        <input type="checkbox" v-model="metricUnitsChecked">
+        <input type="checkbox" v-model="metricUnitsChecked"> <!-- v-model connects checkbox to variable -->
         Use Metric Units
     </label>
 
@@ -35,8 +39,8 @@ function computeBmi( height, weight ) {  //arguments are the data provided in wh
         v-bind:useMetric="metricUnitsChecked"
         v-on:stats-entered="computeBmi"
     ></BodyMassIndexForm>
+    <!-- v-bind sets the boolean in the checkbox with the prop sent to child-->
     <!-- Receive the stats-entered event from BodyMassIndexForm, and use the data sent to calculate the user's body mass index  -->
-    <!-- same name (stats-entered) as defined event in child -->
     <!-- info after = is what we want to do. In this case we want to compute the BMI with the info emitted-->
     <!-- computeBmi is a function we define-->
 
