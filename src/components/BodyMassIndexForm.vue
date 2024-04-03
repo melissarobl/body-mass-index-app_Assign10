@@ -44,16 +44,16 @@ function statsEntered() {
 
     <div v-if="useMetric">
       <label for="heightEntered" id="numberBox">Height in meters</label>
-      <input v-model="heightEntered" id="heightEntered">
+      <input v-model="heightEntered" id="heightEntered" type="number">
       <label for="weightEntered" id="numberBox">Weight in kilograms</label>
-      <input v-model="weightEntered" id="weightEntered">
+      <input v-model="weightEntered" id="weightEntered" type="number">
     </div>
 
     <div v-else>
       <label for="heightEntered" id="numberBox">Height in inches</label>
-      <input v-model="heightEntered" id="heightEntered">
+      <input v-model="heightEntered" id="heightEntered" type="number">
       <label for="weightEntered" id="numberBox">Weight in pounds</label>
-      <input v-model="weightEntered" id="weightEntered">
+      <input v-model="weightEntered" id="weightEntered" type="number">
     </div>
 
     <button v-on:click="statsEntered" type="button" id="button">Calculate</button>  <!-- Show a button with the text 'Calculate'   -->
